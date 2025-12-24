@@ -3,3 +3,36 @@
 *::before {
     box-sizing: border-box;
 }
+
+#calculator {
+    border: 2px solid black;
+}
+
+#calculator {
+    width: 250px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+#output,
+#buttons-memory,
+.row {
+    display: flex;
+    flex: 1;
+}
+
+#output {
+    justify-content: flex-end;
+    padding: 10px;
+    font-size: 2rem;
+    align-items: center;
+}
+
+.row button {
+    flex: 1;
+}
+
+#buttons-memory button {
+    flex: 1;
+}   
