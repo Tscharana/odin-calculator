@@ -6,7 +6,7 @@ const calculator = {
 
 const clicked = document.querySelector("#calculator");
 clicked.addEventListener("click", (e) => {
-    if (e.target.tagName === "BUTTON") { 
+    if (e.target.classList.contains("js-calc-input")) { 
     calculator.handleInput(e.target.textContent);
     }
 })
