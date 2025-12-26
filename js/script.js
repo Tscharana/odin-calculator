@@ -49,11 +49,17 @@ const calculator = {
             } else if (this.secondValue === null) {
                 this.firstOperator = operator;
             } else {
-                this.firstValue = this.calculate();
-                this.firstOperator = operator;
+                this.firstValue = this.calculate().toString;
+                if (operator !== "=") {
+                    this.firstOperator = operator;
+                } else {
+                    this.firstOperator = null;
+                }
                 console.log("New firstValue is " + this.firstValue);
             }
-            this.waitingForSecondValue = true;
+            if (operator != "=") {
+                this.waitingForSecondValue = true;
+            }
         }
         console.log("firstOperator is " + this.firstOperator);
         console.log("waitingForSecondValue is " + this.waitingForSecondValue);
