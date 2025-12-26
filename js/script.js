@@ -2,7 +2,6 @@ const calculator = {
     firstValue: null,
     firstOperator: null,
     secondValue: null,
-    secondOperator: null,
     waitingForSecondValue: false,
 
     allowedNumbers: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."],
@@ -45,11 +44,14 @@ const calculator = {
     processOperator (operator) {
         console.log("Operator recieved: " + operator + ".");
         if (this.firstValue !== null) {
-            if (this.secondValue === null) {
+            if (this.secondValue === null && operator === "=") {
+                return;
+            } else if (this.secondValue === null) {
                 this.firstOperator = operator;
             } else {
                 this.firstValue = this.calculate();
                 this.firstOperator = operator;
+                console.log("New firstValue is " + this.firstValue);
             }
             this.waitingForSecondValue = true;
         }
@@ -59,11 +61,23 @@ const calculator = {
 
     processFunction (func) {
         console.log("Function key recieved: " + func + ".");
+
     },
 
     calculate () {
         console.log("Calculation started.");
-        return 5;
+        let result = 0;
+        if (this.firstOperator === "+") {
+            result = parseFloat(this.firstValue) + parseFloat(this.secondValue);
+        } else if (this.firstOperator === "-") {
+            result = parseFloat(this.firstValue) - parseFloat(this.secondValue);
+        } else if (this.firstOperator === "*") {
+            result = parseFloat(this.firstValue) * parseFloat(this.secondValue);
+        } else if (this.firstOperator === "/") {
+            result = parseFloat(this.firstValue) / parseFloat(this.secondValue);
+        }
+        this.secondValue = null;
+        return result;
     }
 
 }
