@@ -47,6 +47,9 @@ const calculator = {
         if (this.firstValue !== null) {
             if (this.secondValue === null) {
                 this.firstOperator = operator;
+            } else {
+                this.firstValue = this.calculate();
+                this.firstOperator = operator;
             }
             this.waitingForSecondValue = true;
         }
@@ -58,6 +61,11 @@ const calculator = {
         console.log("Function key recieved: " + func + ".");
     },
 
+    calculate () {
+        console.log("Calculation started.");
+        return 5;
+    }
+
 }
 
 const clicked = document.querySelector("#calculator");
@@ -66,4 +74,4 @@ clicked.addEventListener("click", (e) => {
     if (e.target.classList.contains("js-calc-input")) { 
     calculator.handleInput(e.target.dataset.value);
     }
-})  
+})
