@@ -49,7 +49,7 @@ const calculator = {
             } else if (this.secondValue === null) {
                 this.firstOperator = operator;
             } else {
-                this.firstValue = this.calculate().toString;
+                this.firstValue = this.calculate().toString();
                 if (operator !== "=") {
                     this.firstOperator = operator;
                 } else {
@@ -95,9 +95,15 @@ const calculator = {
 }
 
 const clicked = document.querySelector("#calculator");
+const output = document.querySelector("#output");
 
 clicked.addEventListener("click", (e) => {
     if (e.target.classList.contains("js-calc-input")) { 
-    calculator.handleInput(e.target.dataset.value);
+        calculator.handleInput(e.target.dataset.value);
+        if (calculator.waitingForSecondValue === false || calculator.secondValue === null) {
+            output.textContent = calculator.firstValue;
+        } else {
+            output.textContent = calculator.secondValue;
+        }
     }
 })
