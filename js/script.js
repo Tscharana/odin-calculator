@@ -20,7 +20,6 @@ const calculator = {
     },
 
     processNumber (number) {
-        console.log("Number recieved: " + number + ".");
         if (this.waitingForSecondValue === false) {
             if (number === "." && this.firstValue && this.firstValue.includes(".")) {
                 return;
@@ -39,12 +38,9 @@ const calculator = {
                 this.secondValue += number;
             }
         }
-        console.log("firstValue is " + this.firstValue);
-        console.log("secondValue is " + this.secondValue);
     },
 
     processOperator (operator) {
-        console.log("Operator recieved: " + operator + ".");
         if (this.firstValue !== null) {
             if (this.secondValue === null && operator === "=") {
                 return;
@@ -59,25 +55,20 @@ const calculator = {
                     this.waitingForSecondValue = false;
                     this.isResultShown = true;
                 }
-                console.log("New firstValue is " + this.firstValue);
             }
             if (operator !== "=") {
                 this.waitingForSecondValue = true;
             }
         }
-        console.log("firstOperator is " + this.firstOperator);
-        console.log("waitingForSecondValue is " + this.waitingForSecondValue);
     },
 
     processFunction (func) {
-        console.log("Function key recieved: " + func + ".");
         if (func === "CLEAR") {
             this.firstValue = "0";
             this.firstOperator = null;
             this.secondValue = null;
             this.waitingForSecondValue = false;
             this.isResultShown = true;
-            console.log("Calculator reset.")
         }
         if (func === "Backspace") {
             if (this.isResultShown === true) {
@@ -100,7 +91,6 @@ const calculator = {
     },
 
     calculate () {
-        console.log("Calculation started.");
         let result = 0;
         if (this.firstOperator === "+") {
             result = parseFloat(this.firstValue) + parseFloat(this.secondValue);
