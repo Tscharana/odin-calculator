@@ -3,6 +3,7 @@ const calculator = {
     firstOperator: null,
     secondValue: null,
     waitingForSecondValue: false,
+    isResultShown: false,
 
     allowedNumbers: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."],
     allowedOperators: ["+", "-", "*", "/", "="],
@@ -23,8 +24,9 @@ const calculator = {
         if (this.waitingForSecondValue === false) {
             if (number === "." && this.firstValue && this.firstValue.includes(".")) {
                 return;
-            } else if (this.firstValue === null) {
+            } else if (this.firstValue === null || this.isResultShown === true) {
                 this.firstValue = number;
+                this.isResultShown = false;
             } else {
                 this.firstValue += number;
             }
@@ -54,10 +56,12 @@ const calculator = {
                     this.firstOperator = operator;
                 } else {
                     this.firstOperator = null;
+                    this.waitingForSecondValue = false;
+                    this.isResultShown = true;
                 }
                 console.log("New firstValue is " + this.firstValue);
             }
-            if (operator != "=") {
+            if (operator !== "=") {
                 this.waitingForSecondValue = true;
             }
         }
@@ -72,6 +76,7 @@ const calculator = {
         this.firstOperator = null;
         this.secondValue = null;
         this.waitingForSecondValue = false;
+        this.isResultShown = false;
         console.log("Calculator reset.")
         }
     },
