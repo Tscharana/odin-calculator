@@ -101,16 +101,20 @@ const outputCalc = document.querySelector("#output-calculation");
 clicked.addEventListener("click", (e) => {
     if (e.target.classList.contains("js-calc-input")) { 
         calculator.handleInput(e.target.dataset.value);
-        if (calculator.waitingForSecondValue === false || calculator.secondValue === null) {
-            output.textContent = calculator.firstValue;
-            if (calculator.firstOperator === null) {
-                outputCalc.textContent = calculator.firstValue;
-            } else {
-                outputCalc.textContent = calculator.firstValue + " " + calculator.firstOperator;
-            }
-        } else {
-            output.textContent = calculator.secondValue;
-            outputCalc.textContent = calculator.firstValue + " " + calculator.firstOperator + " " + calculator.secondValue;
-        }
+        updateOutput();
     }
 })
+
+function updateOutput () {
+    if (calculator.waitingForSecondValue === false || calculator.secondValue === null) {
+        output.textContent = calculator.firstValue;
+        if (calculator.firstOperator === null) {
+            outputCalc.textContent = calculator.firstValue;
+        } else {
+            outputCalc.textContent = calculator.firstValue + " " + calculator.firstOperator;
+        }
+    } else {
+        output.textContent = calculator.secondValue;
+        outputCalc.textContent = calculator.firstValue + " " + calculator.firstOperator + " " + calculator.secondValue;
+    }
+}
