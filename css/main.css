@@ -23,8 +23,7 @@
     flex: 1 1 20%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    padding: 5px;
+    padding: 10px;
     border: 2px solid black;
 }
 
@@ -32,6 +31,19 @@
 #output {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+}
+
+#output-calculation {
+    flex: 0 0 30%;
+    font-size: small;
+}
+
+#output {
+    flex: 0 0 70%;
+    font-size: larger;
+    
 }
 
 #keyboard {
@@ -43,18 +55,8 @@
 .row {
     flex: 1;
     display: flex;
-    /* flex-wrap: nowrap; */
 }
 
 button {
     flex: 1;
-    /* background-color: lightyellow; */
 }
-/* 
-.btn-number {
-    background-color: lightgreen;
-}
-
-.btn-function {
-    background-color: lightcoral;
-} */
