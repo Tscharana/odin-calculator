@@ -72,11 +72,11 @@ const calculator = {
     processFunction (func) {
         console.log("Function key recieved: " + func + ".");
         if (func === "CLEAR") {
-        this.firstValue = null;
+        this.firstValue = "0";
         this.firstOperator = null;
         this.secondValue = null;
         this.waitingForSecondValue = false;
-        this.isResultShown = false;
+        this.isResultShown = true;
         console.log("Calculator reset.")
         }
     },
