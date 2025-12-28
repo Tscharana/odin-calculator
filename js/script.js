@@ -7,7 +7,7 @@ const calculator = {
 
     allowedNumbers: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."],
     allowedOperators: ["+", "-", "*", "/", "="],
-    allowedFunctions: ["CLEAR"],
+    allowedFunctions: ["CLEAR", "Backspace"],
 
     handleInput (input) {
         if (this.allowedNumbers.includes(input)) {
@@ -72,12 +72,30 @@ const calculator = {
     processFunction (func) {
         console.log("Function key recieved: " + func + ".");
         if (func === "CLEAR") {
-        this.firstValue = "0";
-        this.firstOperator = null;
-        this.secondValue = null;
-        this.waitingForSecondValue = false;
-        this.isResultShown = true;
-        console.log("Calculator reset.")
+            this.firstValue = "0";
+            this.firstOperator = null;
+            this.secondValue = null;
+            this.waitingForSecondValue = false;
+            this.isResultShown = true;
+            console.log("Calculator reset.")
+        }
+        if (func === "Backspace") {
+            if (this.isResultShown === true) {
+                this.processFunction("CLEAR");
+            } else if (this.secondValue !== null) {
+                this.secondValue = this.secondValue.slice(0, -1);
+                if (this.secondValue === "") {
+                    this.secondValue = null;
+                }
+            } else if (this.firstOperator !== null) {
+                this.firstOperator = null;
+                this.waitingForSecondValue = false;
+            } else if (this.firstValue !== null) {
+                this.firstValue = this.firstValue.slice(0, -1);
+                if (this.firstValue === "") {
+                    this.firstValue = null;
+                }
+            }
         }
     },
 
