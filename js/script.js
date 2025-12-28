@@ -105,6 +105,17 @@ clicked.addEventListener("click", (e) => {
     }
 })
 
+window.addEventListener("keydown", (e) => {
+    let key = e.key;
+    if (key === "Enter") {key = "="};
+    if (key === "Escape") {key = "CLEAR"};
+    if (key === ",") {key = "."};
+    if (calculator.allowedNumbers.includes(key) || calculator.allowedOperators.includes(key) || calculator.allowedFunctions.includes(key)) {
+        calculator.handleInput(key);
+        updateOutput();
+    }
+})
+
 function updateOutput () {
     if (calculator.waitingForSecondValue === false || calculator.secondValue === null) {
         output.textContent = calculator.firstValue;
