@@ -85,7 +85,9 @@ const calculator = {
             result = parseFloat(this.firstValue) - parseFloat(this.secondValue);
         } else if (this.firstOperator === "*") {
             result = parseFloat(this.firstValue) * parseFloat(this.secondValue);
-        } else if (this.firstOperator === "/") {
+        } else if (this.firstOperator === "/" && this.secondValue === "0") {
+            result = "Error. Division by 0.";
+        } else if (this.firstOperator === "/" ) {
             result = parseFloat(this.firstValue) / parseFloat(this.secondValue);
         }
         this.secondValue = null;

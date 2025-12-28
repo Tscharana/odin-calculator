@@ -16,7 +16,7 @@
     height: 300px;
     display: flex;
     flex-direction: column;
-    background-color: lightblue;
+    background-color: #777;
 }
 
 #output-wrapper {
