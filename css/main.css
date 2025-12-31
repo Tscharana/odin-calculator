@@ -4,13 +4,6 @@
     box-sizing: border-box;
 }
 
-#calculator,
-#output-wrapper,
-#keyboard,
-.row {
-    /* border: 2px solid black; */
-}
-
 #calculator {
     width: 200px;
     height: 300px;

@@ -105,7 +105,7 @@ const calculator = {
         }
         this.secondValue = null;
         return result;
-    }
+    },
 
 }
 
